@@ -954,13 +954,13 @@ class MyFlixApplication extends _reactDefault.default.Component {
             className: "my-flix",
             __source: {
                 fileName: "src/index.jsx",
-                lineNumber: 11
+                lineNumber: 12
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/index.jsx",
-                    lineNumber: 12
+                    lineNumber: 13
                 },
                 __self: this,
                 children: "Good morning"
