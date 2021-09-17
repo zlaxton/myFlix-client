@@ -13,7 +13,7 @@ constructor(){
     }
   }
   componentDidMount(){
-    axios.get('https://[APP-NAME].herokuapp.com/movies')
+    axios.get('https://movie_api.herokuapp.com/movies')
       .then(response => {
         this.setState({
           movies: response.data
