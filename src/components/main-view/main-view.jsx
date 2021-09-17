@@ -13,7 +13,7 @@ constructor(){
     }
   }
   componentDidMount(){
-    axios.get('https://agile-crag-85270.herokuapp.com/movies')
+    axios.get('https://movie_api.herokuapp.com/movies')
       .then(response => {
         this.setState({
           movies: response.data
