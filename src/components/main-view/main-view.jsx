@@ -29,7 +29,15 @@ constructor(){
 
   setSelectedMovie(movie) {
     this.setState({
-      selectedMovie: movie
+      selectedMovie: movie,
+    });
+  }
+
+  
+
+  onLoggedIn(user) {
+    this.setState({
+      user,
     });
   }
 
@@ -38,17 +46,20 @@ constructor(){
       register,
     });
   }
-
-  onLoggedIn(user) {
-    this.setState({
-      user
-    });
-  }
-
+   
   render() {
-    const { movies, selectedMovie } = this.state;
+    const { movies, selectedMovie, user } = this.state;
+
+    
 
     if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+
+    if (!register)
+      return (
+        <RegistrationView
+          onRegistration={(register) => this.onRegistration(register)}
+        />
+      );
   
     if (movies.length === 0) return <div className="main-view" />;
   
