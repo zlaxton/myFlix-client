@@ -25613,6 +25613,6 @@ $RefreshReg$(_c, "RegistrationView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"espmu","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"l8E2p","react/jsx-runtime":"8xIwr"}]},["ht7PX","hOsjy","dLPEP"], "dLPEP", "parcelRequireaec4")
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"espmu","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"l8E2p"}]},["ht7PX","hOsjy","dLPEP"], "dLPEP", "parcelRequireaec4")
 
 //# sourceMappingURL=index.6701a6e1.js.map
