@@ -22907,7 +22907,7 @@ class MainView extends _reactDefault.default.Component {
         };
     }
     componentDidMount() {
-        _axiosDefault.default.get('https://agile-crag-85270.herokuapp.com/movies').then((response)=>{
+        _axiosDefault.default.get('https://rocky-bayou-72593.herokuapp.com/movies').then((response)=>{
             this.setState({
                 movies: response.data
             });
