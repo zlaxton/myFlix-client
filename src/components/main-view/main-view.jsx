@@ -13,7 +13,7 @@ constructor(){
     }
   }
   componentDidMount(){
-    axios.get('https://agile-crag-85270.herokuapp.com/movies')
+    axios.get('https://rocky-bayou-72593.herokuapp.com/movies')
       .then(response => {
         this.setState({
           movies: response.data
