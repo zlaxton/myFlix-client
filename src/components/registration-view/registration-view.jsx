@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState("");
@@ -6,13 +7,11 @@ export function RegistrationView(props) {
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
 
-<<<<<<< Updated upstream
-  const handleSubmit = () => {
-=======
+
   const handleSubmit = (e) => {
->>>>>>> Stashed changes
     e.preventDefault();
     console.log(username, password, email, birthday);
+    props.onRegistration(username);
   };
 
   return (
@@ -55,9 +54,14 @@ export function RegistrationView(props) {
       </button>
     </form>
   );
-<<<<<<< Updated upstream
 }
 
-=======
-}
->>>>>>> Stashed changes
+RegistrationView.propTypes = {
+    register: PropTypes.shape({
+      username: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      birthdate: PropTypes.string.isRequired,
+    }),
+    onRegistration: PropTypes.func.isRequired,
+  };
