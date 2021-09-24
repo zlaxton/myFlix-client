@@ -1,4 +1,28 @@
 .my-flix {
   color: steelblue;
 }
+.app-container {
+  display: grid;
+  justify-content: center;
+  padding-bottom: auto;
+}
+
+.form-label {
+  margin-top: 20px;
+  height: 25px;
+  color: black;
+}
+
+.form-control {
+  width: 400px !important;
+}
+
+.btn {
+  padding-top: 10px;
+  margin-top: 30px;
+}
+
+form {
+  margin-top: 50%;
+}
 /*# sourceMappingURL=index.caa67093.css.map */
