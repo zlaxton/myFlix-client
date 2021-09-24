@@ -26686,6 +26686,14 @@ parcelHelpers.export(exports, "RegistrationView", ()=>RegistrationView
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _form = require("react-bootstrap/Form");
+var _formDefault = parcelHelpers.interopDefault(_form);
+var _row = require("react-bootstrap/Row");
+var _rowDefault = parcelHelpers.interopDefault(_row);
+var _col = require("react-bootstrap/Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
 var _s = $RefreshSig$();
 function RegistrationView(props) {
     _s();
@@ -26696,126 +26704,178 @@ function RegistrationView(props) {
     const handleSubmit = (e)=>{
         e.preventDefault();
         console.log(username, password, email, birthday);
+        props.onRegistration(username);
     };
-    return(/*#__PURE__*/ _jsxRuntime.jsxs("form", {
+    return(/*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
+        className: "register-wrapper justify-content-md-center",
         __source: {
             fileName: "src/components/registration-view/registration-view.jsx",
-            lineNumber: 15
+            lineNumber: 20
         },
         __self: this,
-        children: [
-            /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+        children: /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+            xs: 12,
+            md: 8,
+            lg: 6,
+            __source: {
+                fileName: "src/components/registration-view/registration-view.jsx",
+                lineNumber: 21
+            },
+            __self: this,
+            children: /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default, {
+                className: "register-form",
                 __source: {
                     fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 16
+                    lineNumber: 22
                 },
                 __self: this,
                 children: [
-                    "Username:",
-                    /*#__PURE__*/ _jsxRuntime.jsx("input", {
-                        type: "text",
-                        value: username,
-                        onChange: (e)=>setUsername(e.target.value)
-                        ,
+                    /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
                         __source: {
                             fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 18
-                        },
-                        __self: this
-                    })
-                ]
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsxs("label", {
-                __source: {
-                    fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 24
-                },
-                __self: this,
-                children: [
-                    "Create Password:",
-                    /*#__PURE__*/ _jsxRuntime.jsx("input", {
-                        type: "password",
-                        value: password,
-                        onChange: (e)=>setPassword(e.target.value)
-                        ,
-                        __source: {
-                            fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 26
-                        },
-                        __self: this
-                    }),
-                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
-                        __source: {
-                            fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 31
+                            lineNumber: 24
                         },
                         __self: this,
                         children: [
-                            "Email:",
-                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
-                                type: "email",
-                                value: email,
-                                onChange: (e)=>setEmail(e.target.value)
-                                ,
+                            /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Label, {
+                                className: "username",
                                 __source: {
                                     fileName: "src/components/registration-view/registration-view.jsx",
-                                    lineNumber: 33
+                                    lineNumber: 25
                                 },
-                                __self: this
+                                __self: this,
+                                children: [
+                                    "Username:",
+                                    /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
+                                        type: "text",
+                                        value: username,
+                                        onChange: (e)=>setUsername(e.target.value)
+                                        ,
+                                        __source: {
+                                            fileName: "src/components/registration-view/registration-view.jsx",
+                                            lineNumber: 26
+                                        },
+                                        __self: this
+                                    })
+                                ]
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Label, {
+                                className: "name",
+                                __source: {
+                                    fileName: "src/components/registration-view/registration-view.jsx",
+                                    lineNumber: 28
+                                },
+                                __self: this,
+                                children: [
+                                    "Name:",
+                                    /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
+                                        type: "text",
+                                        value: name,
+                                        onChange: (e)=>setName(e.target.value)
+                                        ,
+                                        __source: {
+                                            fileName: "src/components/registration-view/registration-view.jsx",
+                                            lineNumber: 29
+                                        },
+                                        __self: this
+                                    })
+                                ]
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Label, {
+                                className: "password",
+                                __source: {
+                                    fileName: "src/components/registration-view/registration-view.jsx",
+                                    lineNumber: 31
+                                },
+                                __self: this,
+                                children: [
+                                    "Password:",
+                                    /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
+                                        type: "password",
+                                        value: password,
+                                        onChange: (e)=>setPassword(e.target.value)
+                                        ,
+                                        __source: {
+                                            fileName: "src/components/registration-view/registration-view.jsx",
+                                            lineNumber: 32
+                                        },
+                                        __self: this
+                                    })
+                                ]
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Label, {
+                                className: "email",
+                                __source: {
+                                    fileName: "src/components/registration-view/registration-view.jsx",
+                                    lineNumber: 34
+                                },
+                                __self: this,
+                                children: [
+                                    "E-mail:",
+                                    /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
+                                        type: "email",
+                                        value: email,
+                                        onChange: (e)=>setEmail(e.target.value)
+                                        ,
+                                        __source: {
+                                            fileName: "src/components/registration-view/registration-view.jsx",
+                                            lineNumber: 35
+                                        },
+                                        __self: this
+                                    })
+                                ]
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Label, {
+                                className: "birthday",
+                                __source: {
+                                    fileName: "src/components/registration-view/registration-view.jsx",
+                                    lineNumber: 37
+                                },
+                                __self: this,
+                                children: [
+                                    "Birth date:",
+                                    /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
+                                        type: "date",
+                                        value: birthday,
+                                        onChange: (e)=>setBirthday(e.target.value)
+                                        ,
+                                        __source: {
+                                            fileName: "src/components/registration-view/registration-view.jsx",
+                                            lineNumber: 38
+                                        },
+                                        __self: this
+                                    })
+                                ]
                             })
                         ]
                     }),
-                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
-                        __source: {
-                            fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 39
-                        },
-                        __self: this,
-                        children: [
-                            "Birthday:",
-                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
-                                type: "date",
-                                value: birthday,
-                                onChange: (e)=>setBirthday(e.target.value)
-                                ,
-                                __source: {
-                                    fileName: "src/components/registration-view/registration-view.jsx",
-                                    lineNumber: 41
-                                },
-                                __self: this
-                            })
-                        ]
-                    })
-                ]
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsxs("button", {
-                type: "submit",
-                onClick: handleSubmit,
-                __source: {
-                    fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 48
-                },
-                __self: this,
-                children: [
                     /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                        onClick: ()=>{
-                            onBackClick(null);
-                        },
+                        className: "registerBtn",
+                        type: "submit",
+                        onClick: handleSubmit,
                         __source: {
                             fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 49
+                            lineNumber: 43
                         },
                         __self: this,
-                        children: "Back"
-                    }),
-                    "Submit"
+                        children: "Register "
+                    })
                 ]
             })
-        ]
+        })
     }));
 }
 _s(RegistrationView, "jsOQN3GC2XlBG9ITlzCdpyJOnso=");
 _c = RegistrationView;
+RegistrationView.propTypes = {
+    register: _propTypesDefault.default.shape({
+        username: _propTypesDefault.default.string.isRequired,
+        password: _propTypesDefault.default.string.isRequired,
+        email: _propTypesDefault.default.string.isRequired,
+        birthday: _propTypesDefault.default.string.isRequired
+    }),
+    onRegistration: _propTypesDefault.default.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "RegistrationView");
 
@@ -26824,6 +26884,62 @@ $RefreshReg$(_c, "RegistrationView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"espmu","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"l8E2p"}]},["ht7PX","hOsjy","dLPEP"], "dLPEP", "parcelRequireaec4")
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"espmu","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"l8E2p","prop-types":"1tgq3","react-bootstrap/Form":"5ykgY","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0"}],"c0x1x":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _themeProvider = require("./ThemeProvider");
+var _excluded = [
+    "bsPrefix",
+    "className",
+    "noGutters",
+    "as"
+];
+var DEVICE_SIZES = [
+    'xl',
+    'lg',
+    'md',
+    'sm',
+    'xs'
+];
+var defaultProps = {
+    noGutters: false
+};
+var Row = /*#__PURE__*/ _reactDefault.default.forwardRef(function(_ref, ref) {
+    var bsPrefix = _ref.bsPrefix, className = _ref.className, noGutters = _ref.noGutters, _ref$as = _ref.as, Component = _ref$as === void 0 ? 'div' : _ref$as, props = _objectWithoutPropertiesLooseDefault.default(_ref, _excluded);
+    var decoratedBsPrefix = _themeProvider.useBootstrapPrefix(bsPrefix, 'row');
+    var sizePrefix = decoratedBsPrefix + "-cols";
+    var classes = [];
+    DEVICE_SIZES.forEach(function(brkPoint) {
+        var propValue = props[brkPoint];
+        delete props[brkPoint];
+        var cols;
+        if (propValue != null && typeof propValue === 'object') cols = propValue.cols;
+        else cols = propValue;
+        var infix = brkPoint !== 'xs' ? "-" + brkPoint : '';
+        if (cols != null) classes.push("" + sizePrefix + infix + "-" + cols);
+    });
+    return(/*#__PURE__*/ _reactDefault.default.createElement(Component, _extendsDefault.default({
+        ref: ref
+    }, props, {
+        className: _classnamesDefault.default.apply(void 0, [
+            className,
+            decoratedBsPrefix,
+            noGutters && 'no-gutters'
+        ].concat(classes))
+    })));
+});
+Row.displayName = 'Row';
+Row.defaultProps = defaultProps;
+exports.default = Row;
+
+},{"@babel/runtime/helpers/esm/extends":"bKAu6","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"3Rubg","classnames":"bOXOh","react":"6TuXu","./ThemeProvider":"eeqfi","@parcel/transformer-js/src/esmodule-helpers.js":"espmu"}]},["ht7PX","hOsjy","dLPEP"], "dLPEP", "parcelRequireaec4")
 
 //# sourceMappingURL=index.6701a6e1.js.map
