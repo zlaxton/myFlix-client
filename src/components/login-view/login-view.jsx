@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PropTypes from "prop-types";
-
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import './login-view.scss';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -17,6 +19,8 @@ export function LoginView(props) {
   };
 
   return (
+    <Row className="login-wrapper justify-content-md-center">
+      <Col xs={12} md={8} lg={6}> 
     <Form>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>
@@ -31,6 +35,8 @@ export function LoginView(props) {
         Submit
       </Button>
     </Form>
+    </Col>
+    </Row>
   );
 }
 
