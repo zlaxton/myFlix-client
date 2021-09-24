@@ -6,11 +6,7 @@ export function RegistrationView(props) {
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
 
-<<<<<<< Updated upstream
-  const handleSubmit = () => {
-=======
   const handleSubmit = (e) => {
->>>>>>> Stashed changes
     e.preventDefault();
     console.log(username, password, email, birthday);
   };
@@ -55,9 +51,4 @@ export function RegistrationView(props) {
       </button>
     </form>
   );
-<<<<<<< Updated upstream
 }
-
-=======
-}
->>>>>>> Stashed changes
