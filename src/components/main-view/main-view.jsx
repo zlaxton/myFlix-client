@@ -3,13 +3,11 @@ import axios from 'axios';
 
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from "../registration-view/registration-view";
+import { Container } from "react-bootstrap";
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-import { Container } from "react-bootstrap";
-import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-
-import "./main-view.scss";
+import Col from 'react-bootstrap/Col';
 
 export class MainView extends React.Component {
   constructor() {
@@ -72,20 +70,23 @@ export class MainView extends React.Component {
   
     return (
       <Container>
-  <div className="main-view">
+  <Row className="main-view justify-content-md-center">
     {selectedMovie
       ? (
-        <Row className="justify-content-md-center">
-  <Col md={8}>
-    <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
-  </Col>
-</Row>
+        <Col md={8}>
+          <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+        </Col>
       )
       : movies.map(movie => (
-        <MovieCard key={movie._id} movie={movie} onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+        <Col md={3}>
+          <MovieCard key={movie._id} movie={movie} onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+        </Col>
       ))
     }
-  </div>
+  </Row>
+);
+        
+  
 </Container>
     );
 }
