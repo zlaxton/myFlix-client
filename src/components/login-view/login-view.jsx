@@ -27,7 +27,7 @@ export function LoginView(props) {
     });
   };
 
-  
+
 
   return (
     <Row className="login-wrapper justify-content-md-center">

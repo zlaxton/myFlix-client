@@ -117,5 +117,3 @@ export class MainView extends React.Component {
     );
 }
 }
-
-     
