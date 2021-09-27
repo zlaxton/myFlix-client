@@ -3,17 +3,22 @@ import axios from 'axios';
 
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from "../registration-view/registration-view";
+import { Container } from "react-bootstrap";
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export class MainView extends React.Component {
-constructor(){
+  constructor() {
     super();
+    //initial state is set to null
     this.state = {
       movies: [],
-      selectedMovie: null
-    }
+      selectedMovie: null,
+      user: null,
+      register: null,
+    };
   }
   componentDidMount(){
     axios.get('https://rocky-bayou-72593.herokuapp.com/movies')
@@ -64,18 +69,31 @@ constructor(){
     if (movies.length === 0) return <div className="main-view" />;
   
     return (
-      <div className="main-view">
-        {selectedMovie
-        ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => 
-          { this.setSelectedMovie(newSelectedMovie); }}/>
-        : movies.map(movie => (
-          <MovieCard key={movie._id} movieData={movie} onMovieClick={(newSelectedMovie) => 
-            { this.setSelectedMovie(newSelectedMovie) }}/>
-        ))
-      }
-      </div>
+      <Container>
+  <div className="main-view justify-content-md-center">
+    {selectedMovie
+      ? (
+        <Row className="justify-content-lg-center">
+        <Col lg={9} md={8}>
+          <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+        </Col>
+        </Row>
+      )
+      : (
+        <Row className="justify-content-center">
+        {movies.map(movie => (
+        <Col xs={10} md={4} lg={3} sm={7} > 
+          <MovieCard key={movie._id} movie={movie} onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+        </Col>
+      ))}
+      </Row>
+      )
+    }
+  </div>
+);
+        
+  
+</Container>
     );
 }
 }
-
-     
