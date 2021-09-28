@@ -20,6 +20,23 @@ export class MainView extends React.Component {
       
     };
   }
+//  Get user recent data from DB
+getUsers(token) {
+  axios.post('https://myflixbypartearroyo.herokuapp.com/users', {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+        users: response.data
+      });
+      console.log(response)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
   getMovies(token) {
     axios.get('https://rocky-bayou-72593.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}`}
