@@ -20,9 +20,30 @@ export class MainView extends React.Component {
       
     };
   }
+
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
+      });
+      this.getMovies(accessToken);
+    }
+  }
+
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.setState({
+      user: authData.user.Username
+    });
+  
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
+  }
 //  Get user recent data from DB
 getUsers(token) {
-  axios.post('https://myflixbypartearroyo.herokuapp.com/users', {
+  axios.post('https://rocky-bayou-72593.herokuapp.com/users', {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(response => {
@@ -52,26 +73,9 @@ getUsers(token) {
     });
   }
 
-  componentDidMount() {
-    let accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user')
-      });
-      this.getMovies(accessToken);
-    }
-  }
-
-  onLoggedIn(authData) {
-    console.log(authData);
-    this.setState({
-      user: authData.user.Username
-    });
   
-    localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user.Username);
-    this.getMovies(authData.token);
-  }
+
+  
 
   onRegister(register) {
     this.setState({
