@@ -22,7 +22,7 @@ export class ProfileView extends React.Component {
   }
 
   getUser(token) {
-    let url = 'https://myflix-jonathon.herokuapp.com/users/' +
+    let url = 'https://rocky-bayou-72593.herokuapp.com/users/' +
         localStorage.getItem('user');
     axios
         .get(url, {
