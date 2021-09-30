@@ -42,7 +42,7 @@ export class ProfileView extends React.Component {
   handleRemove(movie) {
     const token = localStorage.getItem("token");
     const user = localStorage.getItem("user");
-    axios.post(`https://myflix-jonathon.herokuapp.com/users/removefromfavs/${user}/` +
+    axios.post(`https://rocky-bayou-72593.herokuapp.com/users/removefromfavs/${user}/` +
       movie._id, {},
       { headers: { Authorization: `Bearer ${token}` } }
     )
@@ -59,7 +59,7 @@ export class ProfileView extends React.Component {
     if (answer) {
       const token = localStorage.getItem("token");
       const user = localStorage.getItem("user");
-        axios.delete( `https://myflix-jonathon.herokuapp.com/users/${user}`,
+        axios.delete( `https://rocky-bayou-72593.herokuapp.com/users/${user}`,
             { headers: { Authorization: `Bearer ${token}` } }
             )
             .then(() => {
