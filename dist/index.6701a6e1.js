@@ -28528,7 +28528,7 @@ function LoginView(props) {
             const data = response.data;
             props.onLoggedIn(data);
         }).catch((e1)=>{
-            console.log('no such user');
+            console.log(e1);
         });
     };
     return(/*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
