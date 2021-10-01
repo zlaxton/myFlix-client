@@ -10,6 +10,7 @@ import { MovieView } from '../movie-view/movie-view';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+
 export class MainView extends React.Component {
   constructor() {
     super();
@@ -97,7 +98,7 @@ getUsers(token) {
 
     return (
       <Router>
-        <NavBar user={user} />
+     
 
         <Row className="main-view justify-content-md-center">
 
