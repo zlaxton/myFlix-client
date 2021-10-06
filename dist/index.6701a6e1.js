@@ -30614,7 +30614,7 @@ function RegistrationView(props) {
     });
     const handleSubmit = (e)=>{
         e.preventDefault();
-        console.log(username, password, email, birthday);
+        console.log(username, password, email, birthdate);
         props.onRegistration(username);
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default, {
