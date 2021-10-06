@@ -16,7 +16,7 @@ axios.post('https://rocky-bayou-72593.herokuapp.com/users', {
   Username: username,
   Password: password,
   Email: email,
-  Birthday: birthday
+  Birthday: birthdate
 })
 .then(response => {
   const data = response.data;
