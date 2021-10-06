@@ -29,7 +29,7 @@ axios.post('https://rocky-bayou-72593.herokuapp.com/users', {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password, email, birthday);
+    console.log(username, password, email, birthdate);
     props.onRegistration(username);
   };
 
