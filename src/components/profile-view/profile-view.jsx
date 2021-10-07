@@ -73,12 +73,12 @@ export class ProfileView extends React.Component {
             });
             } else {
               // Do Nothing
-              console.log("That was a close one");
+              console.log("Not deleted");
         }
       }
 
   render() {
-    const { movies, user } = this.props;
+    const { movies } = this.props;
 
     const favoritesList = movies.filter(m => {
       return this.state.Favorites.includes(m._id);
