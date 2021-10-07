@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 //import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -26,6 +27,7 @@ export class MovieCard extends React.Component {
     const { movie } = this.props;
 
     return (
+      <Container>
       <Card>
         <Link to={`/movies/${movie._id}`}>
         <Card.Img variant="top" src={movie.ImagePath} />
@@ -38,6 +40,7 @@ export class MovieCard extends React.Component {
           </Link>
         </Card.Body>
       </Card>
+      </Container>
     );
   }
 }
