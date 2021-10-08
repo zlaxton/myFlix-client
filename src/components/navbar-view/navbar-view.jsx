@@ -19,7 +19,7 @@ export class NavBar extends React.Component {
     const { user } = this.props;
     const movies = `/`;
     const profile = `/users/${user}`;
-
+const register = `src\components\registration-view\registration-view.jsx`;
     if (!user) return null;
 
     return (
@@ -35,6 +35,10 @@ export class NavBar extends React.Component {
 
             <Nav.Link as={Link} to={profile} className="link-text">
               Profile
+            </Nav.Link>
+
+            <Nav.Link as={Link} to={register} className="link-text">
+              Register
             </Nav.Link>
 
             <Nav.Link to={'/'} onClick={this.onLoggedOut}>
