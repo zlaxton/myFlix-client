@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 //import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
 export class MovieCard extends React.Component {
@@ -30,7 +30,7 @@ export class MovieCard extends React.Component {
       <Container>
       <Card>
         <Link to={`/movies/${movie._id}`}>
-          <Card.Img className="image-container" variant="top" src={movie.ImageURL} />
+          <Card.Img className="image-container" variant="top" src={movie.ImagePath} />
         </Link>
         <Card.Body>
           <Card.Title><h4>{movie.Title}</h4></Card.Title>
@@ -47,11 +47,11 @@ export class MovieCard extends React.Component {
   }
 }
 
-/*MovieCard.propTypes = {
+MovieCard.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired
-};*/
+};
