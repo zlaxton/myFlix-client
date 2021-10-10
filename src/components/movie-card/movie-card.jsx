@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import PropTypes from 'prop-types';
+
 import { Link } from "react-router-dom";
 
 export class MovieCard extends React.Component {
@@ -53,5 +53,4 @@ MovieCard.propTypes = {
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
 };
