@@ -38,7 +38,10 @@ export class ProfileView extends React.Component {
             });
         });
   }
-
+/**
+ * 
+ * @param {string} movie 
+ */
   handleRemove(movie) {
     const token = localStorage.getItem("token");
     const user = localStorage.getItem("user");
