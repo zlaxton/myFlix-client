@@ -1,0 +1,36 @@
+.movie-poster {
+  justify-content: center;
+}
+
+.movie-title {
+  justify-content: center;
+}
+
+.movie-view {
+  margin-top: -40px;
+  margin-bottom: 2px;
+  width: 100%;
+  height: auto;
+}
+
+.movie-director {
+  margin-bottom: 0px;
+}
+
+
+.button {
+  justify-content: center;
+}
+
+.header-favourites {
+  margin: 40px;
+}
+
+.favourite-movies {
+  width: 50%;
+}
+
+.my-flix {
+  color: steelblue;
+}
+/*# sourceMappingURL=index.67f56bd3.css.map */
