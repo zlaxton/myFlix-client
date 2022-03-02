@@ -1,56 +1,43 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import './movie-card.scss';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
 
 export class MovieCard extends React.Component {
-
-  addFavorite() {
-    const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user');
-
-    axios.post(`rocky-bayou-72593.herokuapp.com/users/${username}/movies/${this.props.movie._id}`, {}, {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then(response => {
-        alert(`Added to Favorites List`)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-
   render() {
+    // This is given to the <MovieCard/> component by the outer world (in this case: `MainView, as this is what's connected to database via movies endpoint of API)
     const { movie } = this.props;
 
     return (
-      <Container>
-      <Card>
-        <Link to={`/movies/${movie._id}`}>
-          <Card.Img className="image-container" variant="top" src={movie.ImagePath} />
-        </Link>
+      <Card className="mb-3 h-100" style={{ width: '16rem' }} >
+        <Card.Img variant="top" src={movie.ImagePath} />
         <Card.Body>
-          <Card.Title><h4>{movie.Title}</h4></Card.Title>
-          <Card.Text>{movie.Description}</Card.Text>
-          <Link to={`/movies/${movie._id}`}>
-            <Button variant="primary">Open</Button>
+          <Link className="text-muted" to={`/movies/${movie._id}`}>
+            <Card.Title>{movie.Title}</Card.Title>
           </Link>
+          <Card.Text>{movie.Description.substring(0, 90)}...</Card.Text>
         </Card.Body>
+        <Card.Footer className="bg-white border-top-0">
+          <Link to={`/movies/${movie._id}`}>
+            <Button variant="link" className="read-more-link pl-0">Read more</Button>
+          </Link>
+        </Card.Footer>
       </Card>
-  
-
-      </Container>
     );
   }
 }
 
+/* static propTypes on MovieCard set to object 
+that contains special values provided as utilities by prop-types module.
+This values help specify how MovieCard's props should look*/
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired
-  }).isRequired,
+    Title: PropTypes.string,
+    Description: PropTypes.string,
+    ImagePath: PropTypes.string
+  }).isRequired
 };
