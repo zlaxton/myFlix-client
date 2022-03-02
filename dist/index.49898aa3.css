@@ -1,56 +1,282 @@
-.card-image {
-  width: 300px;
-  height: 350px;
+.read-more-link {
+  color: #522266;
 }
 
-.card {
-  width: 110%;
-  height: 100%;
-  padding-bottom: 5px;
-  margin-top: 20px;
+.read-more-link:hover {
+  color: #903cb3;
+}
+.card-margin {
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+.material-icons {
+  color: #e4ccee;
 }
 
-.button {
-  position: absolute;
-  bottom: 0px;
+.material-icons:hover {
+  color: #522266;
 }
 
-.card-image {
-  height: 250px;
-}
-.movie-poster {
-  justify-content: center;
+.genre-link,
+.director-link {
+  color: #522266;
 }
 
-.movie-title {
-  justify-content: center;
+.genre-link:hover,
+.director-link:hover {
+  color: #903cb3;
+  text-decoration: none !important;
 }
 
-.movie-view {
-  margin-top: -40px;
-  margin-bottom: 2px;
-  width: 100%;
-  height: auto;
+.add-favorite-btn {
+  background-color: #ececec;
+  color: #522266;
+  border-color: #ececec;
+  border-radius: 24px;
 }
 
-.movie-director {
-  margin-bottom: 0px;
+.add-favorite-btn:hover {
+  color: #522266;
+  border-color: #ececec;
+  background-color: #b9b9b9;
+}
+
+.add-favorite-btn:focus,
+.add-favorite-btn:active {
+  outline: none !important;
+  box-shadow: none;
+  background-color: #b9b9b9;
+}
+
+.heart {
+  color: #522266;
+}
+body {
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+.login-container {
+  margin-top: 100px;
+}
+
+.login-button,
+#formBasicUsername,
+#formBasicPassword {
+  border-radius: 24px;
+  border-color: #522266;
+}
+
+.login-button {
+  background-color: #522266;
+}
+
+.login-button:hover {
+  background-color: #903cb3;
+  border-color: #903cb3;
+}
+
+.login-button:focus,
+.login-button:active {
+  outline: none !important;
+  box-shadow: none;
+  background-color: #903cb3;
+}
+
+.sign-up-link {
+  color: #522266;
+}
+
+.sign-up-link:hover {
+  color: #903cb3;
+}
+.register-container {
+  margin-top: 100px;
+}
+
+.sign-up-button,
+#formBasicUsername,
+#formBasicPassword,
+#formBasicEmail,
+#formBasicBirthday {
+  border-radius: 24px;
+  border-color: #522266;
+}
+
+.sign-up-button {
+  background-color: #522266;
+}
+
+.sign-up-button:hover {
+  background-color: #903cb3;
+  border-color: #903cb3;
+}
+
+.sign-up-button:focus,
+.sigh-up-button:active {
+  outline: none !important;
+  box-shadow: none;
+  background-color: #903cb3;
+}
+
+.login-link {
+  color: #522266;
+}
+
+.login-link:hover {
+  color: #903cb3;
 }
 
 
-.button {
-  justify-content: center;
+.update-button {
+  background-color: #a16e6e;
+  border-color: #a16e6e;
+  color: #522266;
+  border-radius: 24px;
 }
 
-.header-favourites {
-  margin: 40px;
+.update-button:hover {
+  background-color: #674242;
+  border-color: #674242;
 }
 
-.favourite-movies {
-  width: 50%;
+.update-button:focus,
+.update-button:active {
+  outline: none !important;
+  box-shadow: none;
+  background-color: #674242 !important;
 }
 
-.my-flix {
-  color: steelblue;
+.delete-button {
+  background-color: #522266;
+  border-color: #522266;
+  border-radius: 24px;
+}
+
+.delete-button:hover {
+  background-color: #903cb3;
+  border-color: #903cb3;
+}
+
+.delete-button:focus,
+.delete-button:active {
+  outline: none !important;
+  box-shadow: none;
+  background-color: #903cb3 !important;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.movie-link {
+  color: #522266;
+}
+
+.movie-link:hover,
+.movie-link:hover {
+  color: #903cb3;
+  text-decoration: none !important;
+}
+
+.delete-movie {
+  background-color: #a16e6e;
+  border-color: #a16e6e;
+  border-radius: 24px;
+}
+
+.delete-movie:hover {
+  background-color: #674242;
+  border-color: #674242;
+}
+
+.delete-movie:focus,
+.delete-movie:active {
+  outline: none !important;
+  box-shadow: none;
+  background-color: #674242 !important;
+}
+
+.bin {
+  color: #522266;
+}
+.check {
+  color: #e4ccee;
+}
+
+.card-margin {
+  margin-bottom: 20px;
+}
+
+.navbar-brand {
+  font-size: 30px;
+}
+
+.profile-button,
+.logout-button {
+  border-radius: 24px;
+}
+
+.logout-button {
+  background-color: #522266;
+  border-color: #522266;
+}
+
+.logout-button:hover {
+  background-color: #903cb3;
+  border-color: #903cb3;
+}
+
+.logout-button:focus,
+.logout-button:active {
+  outline: none !important;
+  box-shadow: none;
+  background-color: #903cb3;
+}
+
+.profile-button {
+  background-color: #ececec;
+  color: #522266;
+}
+
+.profile-button:hover {
+  color: #522266;
+}
+
+.profile-button:focus,
+.profile-button:active {
+  outline: none !important;
+  box-shadow: none;
+}
+.warning {
+  color: #903cb3;
+}
+
+.update-btn {
+  background-color: #522266;
+  border-color: #522266;
+  border-radius: 24px;
+}
+
+.update-btn:hover {
+  background-color: #903cb3;
+  border-color: #903cb3;
+}
+
+.update-btn:focus,
+.update-btn:active {
+  outline: none !important;
+  box-shadow: none;
+  background-color: #903cb3 !important;
+}
+
+.unregister-btn {
+  color: #522266;
+}
+
+.unregister-btn:hover {
+  color: #903cb3;
+}
+body {
+  font-family: "Alegreya Sans", sans-serif;
 }
 /*# sourceMappingURL=index.49898aa3.css.map */
