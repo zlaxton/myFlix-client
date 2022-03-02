@@ -27730,10 +27730,10 @@ var _tinyInvariantDefault = parcelHelpers.interopDefault(_tinyInvariant);
     }
     var _proto = BrowserRouter.prototype;
     _proto.render = function render() {
-        return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouter.Router, {
+        return _reactDefault.default.createElement(_reactRouter.Router, {
             history: this.history,
             children: this.props.children
-        }));
+        });
     };
     return BrowserRouter;
 }(_reactDefault.default.Component);
@@ -27762,10 +27762,10 @@ BrowserRouter1.prototype.componentDidMount = function() {
     }
     var _proto = HashRouter.prototype;
     _proto.render = function render() {
-        return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouter.Router, {
+        return _reactDefault.default.createElement(_reactRouter.Router, {
             history: this.history,
             children: this.props.children
-        }));
+        });
     };
     return HashRouter;
 }(_reactDefault.default.Component);
@@ -27821,7 +27821,7 @@ var LinkAnchor = forwardRef(function(_ref, forwardedRef) {
     }); // React 15 compat
     if (forwardRefShim !== forwardRef) props.ref = forwardedRef || innerRef;
     else props.ref = innerRef;
-    /* eslint-disable-next-line jsx-a11y/anchor-has-content */ return(/*#__PURE__*/ _reactDefault.default.createElement("a", props));
+    /* eslint-disable-next-line jsx-a11y/anchor-has-content */ return _reactDefault.default.createElement("a", props);
 });
 LinkAnchor.displayName = "LinkAnchor";
 /**
@@ -27833,7 +27833,7 @@ LinkAnchor.displayName = "LinkAnchor";
         "to",
         "innerRef"
     ]);
-    return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouter.__RouterContext.Consumer, null, function(context) {
+    return _reactDefault.default.createElement(_reactRouter.__RouterContext.Consumer, null, function(context) {
         !context && _tinyInvariantDefault.default(false, "You should not use <Link> outside a <Router>");
         var history = context.history;
         var location1 = normalizeToLocation(resolveToLocation(to, context.location), context.location);
@@ -27843,15 +27843,14 @@ LinkAnchor.displayName = "LinkAnchor";
             href: href,
             navigate: function navigate() {
                 var location = resolveToLocation(to, context.location);
-                var isDuplicateNavigation = _history.createPath(context.location) === _history.createPath(normalizeToLocation(location));
-                var method = replace || isDuplicateNavigation ? history.replace : history.push;
+                var method = replace ? history.replace : history.push;
                 method(location);
             }
         }); // React 15 compat
         if (forwardRefShim !== forwardRef) props.ref = forwardedRef || innerRef;
         else props.innerRef = innerRef;
-        return(/*#__PURE__*/ _reactDefault.default.createElement(component, props));
-    }));
+        return _reactDefault.default.createElement(component, props);
+    });
 });
 var toType = _propTypesDefault.default.oneOfType([
     _propTypesDefault.default.string,
@@ -27901,7 +27900,7 @@ function joinClassnames() {
         "to",
         "innerRef"
     ]);
-    return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouter.__RouterContext.Consumer, null, function(context) {
+    return _reactDefault.default.createElement(_reactRouter.__RouterContext.Consumer, null, function(context) {
         !context && _tinyInvariantDefault.default(false, "You should not use <NavLink> outside a <Router>");
         var currentLocation = locationProp || context.location;
         var toLocation = normalizeToLocation(resolveToLocation(to, currentLocation), currentLocation);
@@ -27914,13 +27913,10 @@ function joinClassnames() {
             strict: strict
         }) : null;
         var isActive = !!(isActiveProp ? isActiveProp(match, currentLocation) : match);
-        var className = typeof classNameProp === "function" ? classNameProp(isActive) : classNameProp;
-        var style = typeof styleProp === "function" ? styleProp(isActive) : styleProp;
-        if (isActive) {
-            className = joinClassnames(className, activeClassName);
-            style = _extendsDefault.default({
-            }, style, activeStyle);
-        }
+        var className = isActive ? joinClassnames(classNameProp, activeClassName) : classNameProp;
+        var style = isActive ? _extendsDefault.default({
+        }, styleProp, {
+        }, activeStyle) : styleProp;
         var props = _extendsDefault.default({
             "aria-current": isActive && ariaCurrent || null,
             className: className,
@@ -27929,8 +27925,8 @@ function joinClassnames() {
         }, rest); // React 15 compat
         if (forwardRefShim$1 !== forwardRef$1) props.ref = forwardedRef || innerRef;
         else props.innerRef = innerRef;
-        return(/*#__PURE__*/ _reactDefault.default.createElement(Link, props));
-    }));
+        return _reactDefault.default.createElement(Link, props);
+    });
 });
 NavLink.displayName = "NavLink";
 var ariaCurrentType = _propTypesDefault.default.oneOf([
@@ -27939,27 +27935,20 @@ var ariaCurrentType = _propTypesDefault.default.oneOf([
     "location",
     "date",
     "time",
-    "true",
-    "false"
+    "true"
 ]);
 NavLink.propTypes = _extendsDefault.default({
 }, Link.propTypes, {
     "aria-current": ariaCurrentType,
     activeClassName: _propTypesDefault.default.string,
     activeStyle: _propTypesDefault.default.object,
-    className: _propTypesDefault.default.oneOfType([
-        _propTypesDefault.default.string,
-        _propTypesDefault.default.func
-    ]),
+    className: _propTypesDefault.default.string,
     exact: _propTypesDefault.default.bool,
     isActive: _propTypesDefault.default.func,
     location: _propTypesDefault.default.object,
     sensitive: _propTypesDefault.default.bool,
     strict: _propTypesDefault.default.bool,
-    style: _propTypesDefault.default.oneOfType([
-        _propTypesDefault.default.object,
-        _propTypesDefault.default.func
-    ])
+    style: _propTypesDefault.default.object
 });
 
 },{"react-router":"az1m7","@babel/runtime/helpers/esm/inheritsLoose":"6cZja","react":"4mchR","history":"7Kc8n","prop-types":"2bysO","tiny-warning":"eDUdC","@babel/runtime/helpers/esm/extends":"5inYT","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"9unNO","tiny-invariant":"9t1GA","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"az1m7":[function(require,module,exports) {
@@ -28026,7 +28015,13 @@ var createNamedContext = function createNamedContext(name) {
     return context;
 };
 var historyContext = /*#__PURE__*/ createNamedContext("Router-History");
-var context1 = /*#__PURE__*/ createNamedContext("Router");
+// TODO: Replace with React.createContext once we can assume React 16+
+var createNamedContext$1 = function createNamedContext(name) {
+    var context = _miniCreateReactContextDefault.default();
+    context.displayName = name;
+    return context;
+};
+var context1 = /*#__PURE__*/ createNamedContext$1("Router");
 /**
  * The public API for putting history on context.
  */ var Router1 = /*#__PURE__*/ function(_React$Component) {
@@ -28068,24 +28063,20 @@ var context1 = /*#__PURE__*/ createNamedContext("Router");
         });
     };
     _proto.componentWillUnmount = function componentWillUnmount() {
-        if (this.unlisten) {
-            this.unlisten();
-            this._isMounted = false;
-            this._pendingLocation = null;
-        }
+        if (this.unlisten) this.unlisten();
     };
     _proto.render = function render() {
-        return(/*#__PURE__*/ _reactDefault.default.createElement(context1.Provider, {
+        return _reactDefault.default.createElement(context1.Provider, {
             value: {
                 history: this.props.history,
                 location: this.state.location,
                 match: Router.computeRootMatch(this.state.location.pathname),
                 staticContext: this.props.staticContext
             }
-        }, /*#__PURE__*/ _reactDefault.default.createElement(historyContext.Provider, {
+        }, _reactDefault.default.createElement(historyContext.Provider, {
             children: this.props.children || null,
             value: this.props.history
-        })));
+        }));
     };
     return Router;
 }(_reactDefault.default.Component);
@@ -28112,10 +28103,10 @@ Router1.prototype.componentDidUpdate = function(prevProps) {
     }
     var _proto = MemoryRouter.prototype;
     _proto.render = function render() {
-        return(/*#__PURE__*/ _reactDefault.default.createElement(Router1, {
+        return _reactDefault.default.createElement(Router1, {
             history: this.history,
             children: this.props.children
-        }));
+        });
     };
     return MemoryRouter;
 }(_reactDefault.default.Component);
@@ -28153,11 +28144,11 @@ var Lifecycle1 = /*#__PURE__*/ function(_React$Component) {
  * The public API for prompting the user before navigating away from a screen.
  */ function Prompt(_ref) {
     var message = _ref.message, _ref$when = _ref.when, when = _ref$when === void 0 ? true : _ref$when;
-    return(/*#__PURE__*/ _reactDefault.default.createElement(context1.Consumer, null, function(context) {
+    return _reactDefault.default.createElement(context1.Consumer, null, function(context) {
         !context && _tinyInvariantDefault.default(false, "You should not use <Prompt> outside a <Router>");
         if (!when || context.staticContext) return null;
         var method = context.history.block;
-        return(/*#__PURE__*/ _reactDefault.default.createElement(Lifecycle1, {
+        return _reactDefault.default.createElement(Lifecycle1, {
             onMount: function onMount(self) {
                 self.release = method(message);
             },
@@ -28171,8 +28162,8 @@ var Lifecycle1 = /*#__PURE__*/ function(_React$Component) {
                 self.release();
             },
             message: message
-        }));
-    }));
+        });
+    });
 }
 var messageType = _propTypesDefault.default.oneOfType([
     _propTypesDefault.default.func,
@@ -28209,7 +28200,7 @@ function compilePath(path) {
  * The public API for navigating programmatically with a component.
  */ function Redirect(_ref) {
     var computedMatch = _ref.computedMatch, to = _ref.to, _ref$push = _ref.push, push = _ref$push === void 0 ? false : _ref$push;
-    return(/*#__PURE__*/ _reactDefault.default.createElement(context1.Consumer, null, function(context) {
+    return _reactDefault.default.createElement(context1.Consumer, null, function(context) {
         !context && _tinyInvariantDefault.default(false, "You should not use <Redirect> outside a <Router>");
         var history = context.history, staticContext = context.staticContext;
         var method = push ? history.push : history.replace;
@@ -28222,7 +28213,7 @@ function compilePath(path) {
             method(location);
             return null;
         }
-        return(/*#__PURE__*/ _reactDefault.default.createElement(Lifecycle1, {
+        return _reactDefault.default.createElement(Lifecycle1, {
             onMount: function onMount() {
                 method(location);
             },
@@ -28234,8 +28225,8 @@ function compilePath(path) {
                 }))) method(location);
             },
             to: to
-        }));
-    }));
+        });
+    });
 }
 Redirect.propTypes = {
     push: _propTypesDefault.default.bool,
@@ -28322,7 +28313,7 @@ function evalChildrenDev(children, props, path) {
     var _proto = Route.prototype;
     _proto.render = function render1() {
         var _this = this;
-        return(/*#__PURE__*/ _reactDefault.default.createElement(context1.Consumer, null, function(context$1) {
+        return _reactDefault.default.createElement(context1.Consumer, null, function(context$1) {
             !context$1 && _tinyInvariantDefault.default(false, "You should not use <Route> outside a <Router>");
             var location = _this.props.location || context$1.location;
             var match = _this.props.computedMatch ? _this.props.computedMatch // <Switch> already computed the match for us
@@ -28334,11 +28325,11 @@ function evalChildrenDev(children, props, path) {
             });
             var _this$props = _this.props, children = _this$props.children, component = _this$props.component, render = _this$props.render; // Preact uses an empty array as children by
             // default, so use null if that's the case.
-            if (Array.isArray(children) && isEmptyChildren(children)) children = null;
-            return(/*#__PURE__*/ _reactDefault.default.createElement(context1.Provider, {
+            if (Array.isArray(children) && children.length === 0) children = null;
+            return _reactDefault.default.createElement(context1.Provider, {
                 value: props
-            }, props.match ? children ? typeof children === "function" ? evalChildrenDev(children, props, _this.props.path) : children : component ? /*#__PURE__*/ _reactDefault.default.createElement(component, props) : render ? render(props) : null : typeof children === "function" ? evalChildrenDev(children, props, _this.props.path) : null));
-        }));
+            }, props.match ? children ? typeof children === "function" ? evalChildrenDev(children, props, _this.props.path) : children : component ? _reactDefault.default.createElement(component, props) : render ? render(props) : null : typeof children === "function" ? evalChildrenDev(children, props, _this.props.path) : null);
+        });
     };
     return Route;
 }(_reactDefault.default.Component);
@@ -28454,11 +28445,11 @@ function noop() {
             listen: this.handleListen,
             block: this.handleBlock
         };
-        return(/*#__PURE__*/ _reactDefault.default.createElement(Router1, _extendsDefault.default({
+        return _reactDefault.default.createElement(Router1, _extendsDefault.default({
         }, rest, {
             history: history,
             staticContext: context
-        })));
+        }));
     };
     return StaticRouter;
 }(_reactDefault.default.Component);
@@ -28483,7 +28474,7 @@ StaticRouter1.prototype.componentDidMount = function() {
     var _proto = Switch.prototype;
     _proto.render = function render() {
         var _this = this;
-        return(/*#__PURE__*/ _reactDefault.default.createElement(context1.Consumer, null, function(context) {
+        return _reactDefault.default.createElement(context1.Consumer, null, function(context) {
             !context && _tinyInvariantDefault.default(false, "You should not use <Switch> outside a <Router>");
             var location = _this.props.location || context.location;
             var element, match; // We use React.Children.forEach instead of React.Children.toArray().find()
@@ -28491,7 +28482,7 @@ StaticRouter1.prototype.componentDidMount = function() {
             // to trigger an unmount/remount for two <Route>s that render the same
             // component at different URLs.
             _reactDefault.default.Children.forEach(_this.props.children, function(child) {
-                if (match == null && /*#__PURE__*/ _reactDefault.default.isValidElement(child)) {
+                if (match == null && _reactDefault.default.isValidElement(child)) {
                     element = child;
                     var path = child.props.path || child.props.from;
                     match = path ? matchPath(location.pathname, _extendsDefault.default({
@@ -28500,11 +28491,11 @@ StaticRouter1.prototype.componentDidMount = function() {
                     })) : context.match;
                 }
             });
-            return match ? /*#__PURE__*/ _reactDefault.default.cloneElement(element, {
+            return match ? _reactDefault.default.cloneElement(element, {
                 location: location,
                 computedMatch: match
             }) : null;
-        }));
+        });
     };
     return Switch;
 }(_reactDefault.default.Component);
@@ -28524,13 +28515,13 @@ Switch1.prototype.componentDidUpdate = function(prevProps) {
         var wrappedComponentRef = props.wrappedComponentRef, remainingProps = _objectWithoutPropertiesLooseDefault.default(props, [
             "wrappedComponentRef"
         ]);
-        return(/*#__PURE__*/ _reactDefault.default.createElement(context1.Consumer, null, function(context) {
+        return _reactDefault.default.createElement(context1.Consumer, null, function(context) {
             !context && _tinyInvariantDefault.default(false, "You should not use <" + displayName + " /> outside a <Router>");
-            return(/*#__PURE__*/ _reactDefault.default.createElement(Component, _extendsDefault.default({
+            return _reactDefault.default.createElement(Component, _extendsDefault.default({
             }, remainingProps, context, {
                 ref: wrappedComponentRef
-            })));
-        }));
+            }));
+        });
     };
     C.displayName = displayName;
     C.WrappedComponent = Component;
@@ -33630,7 +33621,7 @@ ProfileView.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"6Ds2u","react":"4mchR","axios":"1IeuP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"etVME","react-bootstrap":"9qMdX","prop-types":"2bysO","react-redux":"lT3ms","../../actions/actions":"6dgbZ","./profile-view.scss":"z96SM"}],"9qMdX":[function(require,module,exports) {
+},{"react/jsx-runtime":"6Ds2u","react":"4mchR","axios":"1IeuP","./profile-view.scss":"z96SM","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"9pz13","react-router-dom":"etVME","react-bootstrap":"9qMdX","prop-types":"2bysO","react-redux":"lT3ms","../../actions/actions":"6dgbZ"}],"z96SM":[function() {},{}],"9qMdX":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Accordion", ()=>_accordionDefault.default
@@ -44032,7 +44023,7 @@ Tooltip.defaultProps = defaultProps;
 Tooltip.displayName = 'Tooltip';
 exports.default = Tooltip;
 
-},{"@babel/runtime/helpers/esm/extends":"5inYT","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"9unNO","classnames":"2cVcN","react":"4mchR","prop-types-extra/lib/isRequiredForA11y":"ch0sf","./ThemeProvider":"oG7Uz","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"z96SM":[function() {},{}],"hRkrD":[function() {},{}],"fbzXW":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"5inYT","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"9unNO","classnames":"2cVcN","react":"4mchR","prop-types-extra/lib/isRequiredForA11y":"ch0sf","./ThemeProvider":"oG7Uz","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"hRkrD":[function() {},{}],"fbzXW":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3e3e = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
