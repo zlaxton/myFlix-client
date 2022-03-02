@@ -1,70 +1,72 @@
 import React, { useState } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-//import PropTypes from "prop-types";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import './login-view.scss';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Link } from "react-router-dom";
-import { connect } from 'react-redux';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import './login-view.scss';
 
 export function LoginView(props) {
-  const [ Username, setUsername ] = useState('');
-  const [ Password, setPassword ] = useState('');
+  // Calling useState() method with empty string (= initial value of login variable)
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
+    // prevents the default refresh after submit button has been clicked
     e.preventDefault();
-    /* Send a request to the server for authentication */
+    // Send a request to the server for authentication
     axios.post('https://rocky-bayou-72593.herokuapp.com/login', {
-      Username: Username,
-      Password: Password
+      Username: username,
+      Password: password
     })
-    .then(response => {
-      const data = response.data;
-      props.onLoggedIn(data);
-    })
-    .catch(e => {
-      console.log(e)
-    });
+      .then(response => {
+        const data = response.data;
+        // This method triggers the onLoggedIn method in MainView and updates user state
+        props.onLoggedIn(data);
+      })
+      .catch(error => {
+        return alert('Invalid username or password. Please try again');
+      });
   };
 
-
-
   return (
-    <Row className="login-wrapper justify-content-md-center">
-      <Col xs={12} md={8} lg={6}> 
-    <Form>
-      <Form.Group controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" placeholder="Enter Username" value={Username} onChange={e => setUsername(e.target.value)} />
-      </Form.Group>
+    <div className="login-view">
+      <Row className="justify-content-center">
+        <Col>
+          <Container className="container login-container border border-light shadow p-3 mb-5 rounded py-3 px-3">
+            <h3 className="pb-2">Log in to myFlix</h3>
+            <Form className="login-form">
+              <Form.Group controlId="formBasicUsername">
+                <Form.Label>Username</Form.Label>
+                <Form.Control type="text" placeholder="Enter username" required value={username} onChange={e => setUsername(e.target.value)} />
+              </Form.Group>
+              <Form.Group controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Enter password" required value={password} onChange={e => setPassword(e.target.value)} />
+              </Form.Group>
+              <Row className="justify-content-end">
+                <Button className="login-button mr-3 ml-3" variant="primary" type="submit" block onClick={handleLogin}>Login</Button>
+              </Row>
+            </Form>
+          </Container>
+          <Container className="mt-4">
+            <Row className="d-flex align-items-center justify-content-center">
+              <span>Don't have an account?</span>
+              <Link to={`/register`}>
+                <Button variant="link" className="sign-up-link btn-lg" type="submit">Sign up</Button>
+              </Link>
 
-      <Form.Group controlId="formPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="Password" placeholder="Password" value={Password} onChange={e => setPassword(e.target.value)} />
-      </Form.Group>
-      <Link to={`/register`}>
-      <Button variant="primary" type="submit" onClick={handleSubmit}>
-        Submit
-        </Button>
-        </Link>
-    </Form>
-    </Col>
-    </Row>
+            </Row>
+          </Container>
+        </Col>
+      </Row>
+    </div >
   );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  handleSubmit: (username, password) => dispatch(handleSubmit(username, password))
-});
-
-export default connect(null, mapDispatchToProps)(LoginView);
-
-/*LoginView.propTypes = {
-    user: PropTypes.shape({
-      Username: PropTypes.string.isRequired,
-      Password: PropTypes.string.isRequired,
-    }),
-    onLoggedIn: PropTypes.func.isRequired,
-  };*/
+LoginView.propTypes = {
+  onLoggedIn: PropTypes.func.isRequired
+};
