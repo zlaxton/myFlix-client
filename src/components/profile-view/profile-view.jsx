@@ -1,141 +1,165 @@
 import React from 'react';
-import {Row, Col, Button, Container, Card } from 'react-bootstrap';
-import PropTypes, { string } from 'prop-types';
-import axios from 'axios';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux'
+import { setMovies } from '../../actions/actions';
+import { setUserProfile } from '../../actions/actions';
+
 import { Link } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+
+
 import './profile-view.scss';
+import axios from 'axios';
 
 export class ProfileView extends React.Component {
   constructor() {
     super();
-    this.state = {
-      username: null,
-      password: null,
-      email: null,
-      birthday: null,
-      Favorites: [],
-    }
-  }
-  componentDidMount() {
-    let accessToken = localStorage.getItem("token");
-    this.getUser(accessToken);
+    this.state = {};
   }
 
-  getUser(token) {
-    let url = 'https://rocky-bayou-72593.herokuapp.com/users/' +
-        localStorage.getItem('user');
-    axios
-        .get(url, {
-            headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((response) => {
-            this.setState({
-                Username: response.data.Username,
-                Password: response.data.Password,
-                Email: response.data.Email,
-                Birthday: response.data.Birthday,
-                Favorites: response.data.Favorites,
-            });
-        });
-  }
-/**
- * 
- * @param {string} movie 
- */
-  handleRemove(movie) {
-    const token = localStorage.getItem("token");
-    const user = localStorage.getItem("user");
-    axios.post(`https://rocky-bayou-72593.herokuapp.com/users/removefromfavs/${user}/` +
-      movie._id, {},
-      { headers: { Authorization: `Bearer ${token}` } }
-    )
-      .then((response) => {
-        console.log(response);
-        alert(movie.Title + " has been removed from your favorites!");
-        window.location.reload(false);
+  deleteFavorite(movieId) {
+    axios.delete(`https://rocky-bayou-72593.herokuapp.com/users/${localStorage.getItem('user')}/Movies/${movieId}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+    })
+      .then(res => {
+        document.location.reload(true);
       })
+      .then(res => {
+        alert('Movie successfully deleted from favorites');
+      })
+
+      .catch(e => {
+        alert('Movie could not be deleted from favorites ' + e)
+      });
   }
 
-  handleDelete() {
+  deleteProfile() {
+    axios.delete(`https://rocky-bayou-72593.herokuapp.com/users/${localStorage.getItem('user')}`,
+      {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      })
+      .then(res => {
+        alert('Do you really want to delete your account?')
+      })
+      .then(res => {
+        alert('Account was successfully deleted')
+      })
+      .then(res => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
 
-    const answer = window.confirm("This cannot be undone, are you sure?");
-    if (answer) {
-      const token = localStorage.getItem("token");
-      const user = localStorage.getItem("user");
-        axios.delete( `https://rocky-bayou-72593.herokuapp.com/users/${user}`,
-            { headers: { Authorization: `Bearer ${token}` } }
-            )
-            .then(() => {
-                alert(user + " has been deleted.");
-                localStorage.removeItem("user");
-                localStorage.removeItem("token");
-                window.location.pathname = "/";
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-            } else {
-              // Do Nothing
-              console.log("Not deleted");
-        }
-      }
+        this.setState({
+          user: null
+
+        });
+        window.open('/', '_self');
+      })
+      .catch(e => {
+        alert('Account could not be deleted ' + e)
+      });
+  }
+
+
 
   render() {
-    const { movies } = this.props;
+    const { user, userProfile, movies } = this.props;
 
-    const favoritesList = movies.filter(m => {
-      return this.state.Favorites.includes(m._id);
-    });
-    
+    const favoritesList = movies.filter(movie => userProfile.Favorites.includes(movie._id));
+
+    if (!user || !userProfile || !movies || movies.length === 0) return <div>loading</div>;
+
     return (
-      <Container className="profile-wrapper m-4">
-        <Row  className="text-white">
-          <Col>
-            <h2>Username: {`${this.props.user}`}</h2>
-            <p>Email: {`${this.state.Email}`}</p>
-            <p>Birthday: {`${this.state.Birthday}`}</p>
-            <h5 className="mt-5">Your Favorites</h5>
-          </Col>
-         </Row>
-         <Row>
-          {favoritesList.map((movie) => {
-              return (
-                <Col md={4} key={movie._id}>
-                  <div key={movie._id}>
-                    <Card className='mb-4 h-100 text-white bg-transparent'>
-                      <Card.Img variant="top" src={movie.ImageUrl} />
-                      <Card.Body>
-                        <Link to={`/movies/${movie.Title}`}>
-                          <Card.Img variant="top" src={movie.imageUrl} />
-                          <Card.Title as='h3'>{movie.Title}</Card.Title>
+      <div className="profile-view">
+        <Container>
+          <Card style={{ minwidth: '20rem' }} className="border-0 pl-0">
+            <Card.Body>
+              <span className="d-flex align-items-center mb-4">
+                <Link to={`/`}>
+                  <i className="material-icons">arrow_back_ios</i>
+                </Link>
+                <h1 className="display-4">Profile</h1>
+              </span>
+              <Card.Text className="mb-4 lead">
+                <span className="font-weight-bold">Username: </span>{userProfile.Username} <br />
+                <span className="font-weight-bold">Email: </span>{userProfile.Email} <br />
+                <span className="font-weight-bold">Birthday: </span>{userProfile.Birthday.slice(0, 10)} <br />
+              </Card.Text>
+              <Link to={`/update/${userProfile.Username}`}>
+                <Button variant="primary" className="update-button">Update my profile</Button>
+              </Link>
+
+              <Button variant="primary" className="delete-button ml-2" onClick={() => this.deleteProfile()}>Delete my profile</Button>
+            </Card.Body>
+          </Card>
+          <Container>
+
+            <h4 className="mt-4 mb-4">My favorite movies: </h4>
+            {userProfile.Favorites.length === 0 &&
+              <div>You have no favorite movies</div>}
+            {userProfile.Favorites.length > 0 &&
+              <ul className="ml-0 pl-0">
+                {favoritesList.map(movie =>
+                  (
+                    <li key={movie._id} className="mb-2 ">
+                      <span className="d-flex align-items-center">
+                        <Button variant="primary" size="sm" className="delete-movie mr-2" onClick={e => this.deleteFavorite(movie._id)}>
+                          <i className="material-icons bin">delete</i>
+                        </Button>
+                        <Link to={`/movies/${movie._id}`}>
+                          <h5 className="movie-link link">{movie.Title}</h5>
                         </Link>
-                         <Button className='mb-4' variant="outline-secondary" size="sm" onClick={() => this.handleRemove(movie)}>Remove from Favorites</Button> 
-                      </Card.Body>
-                    </Card>
-                  </div>
-                </Col>
-              );
-            })}
-          </Row>
-         <Row>
-            <Col className="acc-btns mt-1">
-              <Button size="md" variant="outline-danger" type="submit" ml="4" onClick={() => this.handleDelete()} >Delete Account</Button>
-            </Col>
-            <Col className="acc-btns mt-1">
-              <Link to={`/userupdate/${this.props.user}`}><Button size="md" variant="warning">Edit Account</Button></Link>
-            </Col>
-         </Row>
-      </Container>
+
+                      </span>
+                    </li>
+                  ))}
+              </ul>
+
+            }
+
+          </Container>
+        </Container>
+      </div >
+
+
     );
+
   }
 }
 
+let mapStateToProps = state => {
+  return { movies: state.movies, userProfile: state.userProfile }
+}
+
+export default connect()(ProfileView);
+
 ProfileView.propTypes = {
-  users: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
-    Birthday: PropTypes.string,
-    Favorites: PropTypes.array,
+  userProfile: PropTypes.shape({
+    _id: PropTypes.string,
+    Username: PropTypes.string,
+    Password: PropTypes.string,
+    Birthday: PropTypes.date
   }),
-  movies: PropTypes.array.isRequired,
-};
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string,
+      Title: PropTypes.string,
+      ReleaseYear: PropTypes.string,
+      ImagePath: PropTypes.string,
+      Description: PropTypes.string,
+      Genre: PropTypes.shape({
+        Name: PropTypes.string,
+        Description: PropTypes.string
+      }),
+      Director: PropTypes.shape({
+        Name: PropTypes.string,
+        Bio: PropTypes.string,
+        Birth: PropTypes.string,
+        Death: PropTypes.string
+      }),
+      Featured: PropTypes.boolean,
+      Actors: PropTypes.array
+    })
+  ).isRequired
+}
