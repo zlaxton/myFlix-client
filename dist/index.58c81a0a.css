@@ -1,0 +1,85 @@
+.card-margin {
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+body {
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+.login-container {
+  margin-top: 100px;
+}
+
+.login-button,
+#formBasicUsername,
+#formBasicPassword {
+  border-radius: 24px;
+  border-color: #522266;
+}
+
+.login-button {
+  background-color: #522266;
+}
+
+.login-button:hover {
+  background-color: #903cb3;
+  border-color: #903cb3;
+}
+
+.login-button:focus,
+.login-button:active {
+  outline: none !important;
+  box-shadow: none;
+  background-color: #903cb3;
+}
+
+.sign-up-link {
+  color: #522266;
+}
+
+.sign-up-link:hover {
+  color: #903cb3;
+}
+.register-container {
+  margin-top: 100px;
+}
+
+.sign-up-button,
+#formBasicUsername,
+#formBasicPassword,
+#formBasicEmail,
+#formBasicBirthday {
+  border-radius: 24px;
+  border-color: #522266;
+}
+
+.sign-up-button {
+  background-color: #522266;
+}
+
+.sign-up-button:hover {
+  background-color: #903cb3;
+  border-color: #903cb3;
+}
+
+.sign-up-button:focus,
+.sigh-up-button:active {
+  outline: none !important;
+  box-shadow: none;
+  background-color: #903cb3;
+}
+
+.login-link {
+  color: #522266;
+}
+
+.login-link:hover {
+  color: #903cb3;
+}
+
+
+
+.my-flix {
+  color: steelblue;
+}
+/*# sourceMappingURL=index.58c81a0a.css.map */
