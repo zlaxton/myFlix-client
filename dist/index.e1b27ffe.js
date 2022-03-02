@@ -25634,6 +25634,7 @@ var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactRedux = require("react-redux");
 // BrowserRouter used for implementing state-based routing
 var _reactRouterDom = require("react-router-dom");
+// import { RouterLink } from 'react-router-dom';
 var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
 var _row = require("react-bootstrap/Row");
@@ -25919,7 +25920,7 @@ class MainView extends _reactDefault.default.Component {
                             __self: this,
                             children: [
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                                    component: _reactRouterDom.RouterLink,
+                                    component: RouterLink,
                                     to: `/users/${user1}`,
                                     __source: {
                                         fileName: "src/components/main-view/main-view.jsx",
